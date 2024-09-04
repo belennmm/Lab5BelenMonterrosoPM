@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.lab5belenmonterroso.ui.theme.Lab5BelenMonterrosoTheme
@@ -25,8 +26,8 @@ class VenuesActivity : ComponentActivity() {
                     VenuesListScreen(
                         venues = listOf(
                             Venue("Wos", "Fórum Majadas, Guatemala"),
-                            Venue("Guns and Roses Denver", "Denver Hall"),
-                            Venue("Guns And Roses New York", "Maddison Square Garden")
+                            Venue("Adele", "Ottawa, Canada"),
+                            Venue("Los Ángeles Azules", "Puerto Rico")
                         ),
                         modifier = Modifier.padding(innerPadding)
                     )
@@ -41,6 +42,14 @@ fun VenuesListScreen(venues: List<Venue>, modifier: Modifier = Modifier) {
     LazyColumn(modifier = modifier.fillMaxSize().padding(16.dp)) {
         items(venues.size) { index ->
             VenueItem(venue = venues[index])
+
+            if (index < venues.size - 1) {
+                Divider(
+                    color = Color.Gray,
+                    thickness = 1.dp,
+                    modifier = Modifier.padding(vertical = 4.dp)
+                )
+            }
         }
     }
 }
@@ -66,9 +75,9 @@ fun VenuesListPreview() {
     Lab5BelenMonterrosoTheme {
         VenuesListScreen(
             venues = listOf(
-                Venue("Guns And Roses LA", "LA Hall"),
-                Venue("Guns and Roses Denver", "Denver Hall"),
-                Venue("Guns And Roses New York", "Maddison Square Garden")
+                Venue("Wos", "Fórum Majadas, Guatemala"),
+                Venue("Adele", "Ottawa, Canada"),
+                Venue("Los Ángeles Azules", "Puerto Rico")
             )
         )
     }
